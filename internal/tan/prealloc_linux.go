@@ -22,17 +22,9 @@
 package tan
 
 import (
-	"os"
-	"syscall"
-
 	"github.com/lni/vfs"
-	"golang.org/x/sys/unix"
 )
 
 func prealloc(f vfs.File, size int64) error {
-	osf, ok := f.(*os.File)
-	if !ok {
-		return nil
-	}
-	return syscall.Fallocate(int(osf.Fd()), unix.FALLOC_FL_KEEP_SIZE, 0, size)
+	return nil
 }
